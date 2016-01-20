@@ -74,7 +74,7 @@ header .menu{float: right;margin: 0 15px 0 0;}
 header .menu li{display: inline-block;vertical-align: middle;}
 header .menu li:before{content: "|";font-size: 24px;color: #269162;margin: 0 7px 0 5px;}
 header .menu li:first-child:before{content: normal; }
-header .menu li a{font-size: 24px;text-decoration: none;}
+header .menu li a{font-size: 24px;text-decoration: none;cursor: pointer;}
 
 /* name month */
 .name-month{position: relative;top: calc(50% - 143px);transform: translate(0, -50%);}
@@ -86,10 +86,15 @@ header .menu li a{font-size: 24px;text-decoration: none;}
 .subscribe{padding: 20px 0 90px;}
 .subscribe .bold{text-transform: uppercase;font-size: 20px;}
 .subscribe p{font-size: 18px;line-height: 36px;color: #333333;padding: 25px 25%;}
-.subscribe .form-subscribe input{border: 1px solid #D6D6D6;height: 40px;padding: 0 15px;line-height: 40px;box-sizing: border-box;margin-right: -5px;width: 350px;}
-.subscribe .form-subscribe button{border: 2px solid #008752;background-color: #008752;color: #fff;text-transform: uppercase;height: 40px;line-height: 36px;
-	font-size: 12px;padding: 0 25px;cursor: pointer;}
-.subscribe .form-subscribe button:hover{color: #008752;background-color: #fff;}
+.subscribe .form-subscribe p{display: inline-block;padding: 0;margin: 0;}
+.subscribe .form-subscribe input{border: 1px solid #D6D6D6;height: 40px;padding: 0 15px;line-height: 40px;box-sizing: border-box;margin-right: -4px;width: 350px;}
+.subscribe .form-subscribe input.wpcf7-not-valid{border-color: #9a0000;}
+.subscribe .form-subscribe input[type="submit"]{border: 2px solid #008752;background-color: #008752;color: #fff;text-transform: uppercase;height: 40px;line-height: 36px;
+	font-size: 12px;padding: 0 25px;cursor: pointer;width: auto;}
+.subscribe .form-subscribe input[type="submit"]:hover{color: #008752;background-color: #fff;}
+.subscribe .form-subscribe .wpcf7-not-valid-tip,
+.subscribe .form-subscribe .wpcf7-validation-errors,
+.subscribe .form-subscribe img.ajax-loader{display: none !important;}
 
 /* art calendar */
 .art-calendar{background: url("img/home-bg-middle.jpg") bottom no-repeat;padding: 20px 0 50px;margin-bottom: -50px;min-height: 700px;}
@@ -148,10 +153,11 @@ section.month-page .images-post .img:first-child{border-top: none;}
 .content p:last-child{padding-bottom: 0;}
 
 /* popup */
-.popup{position: absolute;z-index: 100;width: 100%;height: 100%;top: 0;left: 0;background-color: #fff;display: none;
+.popup{position: fixed;z-index: 100;width: 100%;height: 100%;top: 0;left: 0;background-color: #fff;display: none;
 	overflow-x: hidden;overflow-y: auto;}
 .popup.calendar{background: url("img/bg-popup-calendar.jpg") center no-repeat;background-size: cover;}
-.popup .popup-wrapper{background-color: rgba(0, 135, 82, 0.7);padding: 35px 0;}
+.popup .popup-wrapper{background-color: rgba(0, 135, 82, 0.7);padding: 35px 0;position: fixed;width: 100%;height: 100%;overflow-x: hidden;overflow-y: auto;}
+.popup .popup-wrapper .container{transform: translate(0, -50%);position: relative;top: 50%;}
 .popup .popup-content{padding: 20px;border: 1px solid #BDE0D3;margin: 0 35px;position: relative;}
 .popup .popup-content .close-btn{position: absolute;top: 25px;right: 25px;cursor: pointer;}
 .popup .popup-title{font-size: 38px;color: #fff;}

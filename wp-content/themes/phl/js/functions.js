@@ -26,11 +26,16 @@
         $('select').niceSelect();
     }
 
-    $("[data-modal]").on("click", function(){
-        $("body").addClass("popup-open");
-
+    $("ul.menu li.modal-link a").on("click", function(){
         var _this = $(this);
-        $("#" + _this.data("modal")).fadeIn("fast", function(){
+        var popup = 'calendar';
+        if(_this.closest('li').hasClass('issues')){
+            popup = 'issues';
+        }
+
+        $(".popup." + popup).fadeIn("fast", function(){
+            $("body").addClass("popup-open");
+
             if($("#owl-carousel-popup").length > 0) {
                 $("#owl-carousel-popup").owlCarousel({
                     items: 4,
@@ -41,7 +46,7 @@
             }
 
             $(".close-btn").on("click", function(){
-                $("#" + _this.data("modal")).fadeOut("fast", function(){
+                $(".popup").fadeOut("fast", function(){
                     $("body").removeClass("popup-open");
                 });
             });
