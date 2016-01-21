@@ -12,7 +12,7 @@ dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
 article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
+figure, figcaption, footer, header,
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
     margin: 0;
@@ -26,7 +26,7 @@ time, mark, audio, video {
 
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {display: block;}
+footer, header, menu, nav, section {display: block;}
 
 /*@font-face {*/
 /*font-family: 'ProximaNova-Regular';*/
@@ -112,16 +112,17 @@ header .menu li a{font-size: 24px;text-decoration: none;cursor: pointer;}
 /* month page */
 section.month-page h1{font-size: 68px;color: #b5a787;}
 section.month-page h1 strong{color: #766052;}
-section.month-page .perl-box{background: url("img/bg-perl.png") center no-repeat;height: 1250px;padding: 120px 90px 120px 150px;}
+section.month-page .perl-box{background: url("img/bg-perl.png") center no-repeat;height: 1250px;padding: 120px 90px 120px 150px;position: relative;}
+section.month-page .perl-box .back-close{position: absolute;top: 80px;right: 70px;z-index: 1000;}
 section.month-page .nicescroll{height: 920px;}
 section.month-page .desc{background: url("img/bg-desc.png") bottom no-repeat;padding-bottom: 350px;}
 section.month-page .desc p{color: #765f51;}
 section.month-page .btn{border: 1px solid #269162;display: inline-block;padding: 10px 20px;font-size: 18px;text-decoration: none;margin-bottom: 20px;}
 section.month-page .btn:hover{border: 2px solid transparent;background-color: #269162;color: #fff;}
 section.month-page .custom-fields{padding: 30px;border-top: 1px solid #E1DAD0;}
-section.month-page .custom-fields span{color: #e37471;font-size: 42px;display: block;}
+section.month-page .custom-fields strong{color: #e37471;font-size: 42px;display: block;padding-bottom: 10px;}
 section.month-page .custom-fields p{color: #766052;font-size: 18px;line-height: 24px;}
-section.month-page .images-post .img{border-top: 1px solid #E1DAD0;padding: 20px 0;}
+section.month-page .images-post .img{border-top: 1px solid #E1DAD0;padding: 20px 0;text-align: center;}
 section.month-page .images-post .img:first-child{border-top: none;}
 
 /* pagination page */
@@ -138,7 +139,8 @@ section.month-page .images-post .img:first-child{border-top: none;}
 .pagination-month ul li{display: inline-block;margin-left: 5px;}
 .pagination-month ul li a{color: #755e50;text-decoration: none;font-size: 18px;height: 42px;line-height: 42px;border: 1px solid transparent;
     width: 62px;text-align: center;display: block;}
-.pagination-month ul li.active a{color: #008752;border-color: #008752;text-transform: uppercase;}
+.pagination-month ul li.active a,
+.pagination-month ul li a:hover{color: #008752;border-color: #008752;text-transform: uppercase;}
 
 /* sidebar */
 .sidebar{width: 370px;}
