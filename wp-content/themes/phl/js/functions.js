@@ -12,7 +12,8 @@
             items: 5,
             loop: true,
             nav: true,
-            navText: ['<span class="arrow left"></span>', '<span class="arrow right"></span>']
+            navText: ['<span class="arrow left"></span>', '<span class="arrow right"></span>'],
+            startPosition: startMonthCarousel - 2
         });
     }
 

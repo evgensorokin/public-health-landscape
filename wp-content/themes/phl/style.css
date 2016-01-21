@@ -15,13 +15,13 @@ article, aside, canvas, details, embed,
 figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
-	box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    box-sizing: border-box;
 }
 
 /* HTML5 display-role reset for older browsers */
@@ -90,7 +90,7 @@ header .menu li a{font-size: 24px;text-decoration: none;cursor: pointer;}
 .subscribe .form-subscribe input{border: 1px solid #D6D6D6;height: 40px;padding: 0 15px;line-height: 40px;box-sizing: border-box;margin-right: -4px;width: 350px;}
 .subscribe .form-subscribe input.wpcf7-not-valid{border-color: #9a0000;}
 .subscribe .form-subscribe input[type="submit"]{border: 2px solid #008752;background-color: #008752;color: #fff;text-transform: uppercase;height: 40px;line-height: 36px;
-	font-size: 12px;padding: 0 25px;cursor: pointer;width: auto;}
+    font-size: 12px;padding: 0 25px;cursor: pointer;width: auto;}
 .subscribe .form-subscribe input[type="submit"]:hover{color: #008752;background-color: #fff;}
 .subscribe .form-subscribe .wpcf7-not-valid-tip,
 .subscribe .form-subscribe .wpcf7-validation-errors,
@@ -101,6 +101,7 @@ header .menu li a{font-size: 24px;text-decoration: none;cursor: pointer;}
 .art-calendar p{font-size: 18px;line-height: 28px;color: #333333;padding: 25px 25%;}
 .owl-carousel{margin: 70px 100px 0;width: calc(100% - 200px);}
 .owl-carousel .slide{width: 175px;height: 175px;border: 2px solid #008752;text-align: center;margin: 0 auto;display: block;text-decoration: none;}
+.owl-carousel .slide.active,
 .owl-carousel .slide:hover{border: 5px solid #008752;}
 .owl-carousel .slide p{position: relative;top: 50%;transform: translate(-50%, -50%);font-size: 26px;color: #008752;left: 50%;padding: 0;}
 .owl-carousel .slide p span{font-size: 16px;color: #008752;display: block;}
@@ -136,7 +137,7 @@ section.month-page .images-post .img:first-child{border-top: none;}
 .pagination-month ul{text-align: justify;float: right;}
 .pagination-month ul li{display: inline-block;margin-left: 5px;}
 .pagination-month ul li a{color: #755e50;text-decoration: none;font-size: 18px;height: 42px;line-height: 42px;border: 1px solid transparent;
-	width: 62px;text-align: center;display: block;}
+    width: 62px;text-align: center;display: block;}
 .pagination-month ul li.active a{color: #008752;border-color: #008752;text-transform: uppercase;}
 
 /* sidebar */
@@ -154,7 +155,7 @@ section.month-page .images-post .img:first-child{border-top: none;}
 
 /* popup */
 .popup{position: fixed;z-index: 100;width: 100%;height: 100%;top: 0;left: 0;background-color: #fff;display: none;
-	overflow-x: hidden;overflow-y: auto;}
+    overflow-x: hidden;overflow-y: auto;}
 .popup.calendar{background: url("img/bg-popup-calendar.jpg") center no-repeat;background-size: cover;}
 .popup .popup-wrapper{background-color: rgba(0, 135, 82, 0.7);padding: 35px 0;position: fixed;width: 100%;height: 100%;overflow-x: hidden;overflow-y: auto;}
 .popup .popup-wrapper .container{transform: translate(0, -50%);position: relative;top: 50%;}
