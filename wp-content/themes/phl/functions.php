@@ -248,42 +248,6 @@ require get_template_directory() . '/inc/template-tags.php';
  */
 require get_template_directory() . '/inc/customizer.php';
 
-add_action('init', 'events_register');
-
-function events_register() {
-
-    $labels = array(
-        'name' => _x('Events', 'post type general name'),
-        'singular_name' => _x('Post', 'post type singular name'),
-        'add_new' => _x('Add New', 'post'),
-        'add_new_item' => __('Add New Post'),
-        'edit_item' => __('Edit Post'),
-        'new_item' => __('New Post'),
-        'view_item' => __('View Post'),
-        'search_items' => __('Search Post'),
-        'not_found' =>  __('Nothing found'),
-        'not_found_in_trash' => __('Nothing found in Trash'),
-        'parent_item_colon' => ''
-    );
-
-    $args = array(
-        'labels' => $labels,
-        'public' => true,
-        'publicly_queryable' => true,
-        'show_ui' => true,
-        'query_var' => true,
-        'menu_icon' => 'dashicons-book-alt',
-        'rewrite' => true,
-        'capability_type' => 'post',
-        'hierarchical' => false,
-        'menu_position' => 5,
-        'supports' => array('title','thumbnail','editor','comments', 'excerpt'),
-        'taxonomies' => array('post_tag')
-    );
-
-    register_post_type( 'events' , $args );
-}
-
 if( function_exists('acf_add_options_page') ) {
 
     acf_add_options_page();

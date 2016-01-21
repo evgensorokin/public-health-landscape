@@ -1,6 +1,8 @@
 <?php
 /* Template Name: Calendar Month page */
 get_header('month');
+global $post;
+$postId = $post->ID;
 ?>
 <?php
 // Start the loop.
@@ -47,29 +49,36 @@ while ( have_posts() ) : the_post(); ?>
 
                 <div class="pagination-month clearfix">
 
-                    <select>
-                        <option>2014</option>
-                        <option>2015</option>
-                        <option>2016</option>
-                        <option>2017</option>
-                        <option>2018</option>
-                    </select>
+                    <?php
+                    $categoryCalendar = get_category_by_slug('calendar');
+                    $currentCategory = get_the_category($postId);
 
+                    $args = array('parent' => $categoryCalendar->term_id);
+                    $categories = get_categories( $args );
+
+                    if( $categories ) { ?>
+                        <select></select>
+
+                        <div class="nice-select">
+                            <span class="current"><?= $currentCategory[0]->cat_name; ?></span>
+                            <ul class="list">
+                                <?php foreach ($categories as $cat) { ?>
+                                <li class="option <?= $cat->cat_name == $currentCategory[0]->cat_name ? 'selected' : '' ?>" onclick="redirectLink('<?php echo esc_url( home_url( '/' ) ); ?>calendar/<?= $cat->cat_name ?>/january')"><?= $cat->cat_name ?></li>
+                                <?php } ?>
+                            </ul>
+                        </div>
+                    <?php } ?>
+
+                    <?php
+                    $args = array('post_type' => 'post', 'posts_per_page' => 12, 'category_name' => $currentCategory[0]->slug, 'orderby' => 'post_date', 'order' => 'ASC');
+                    $loop = new WP_Query( $args );
+                    if( $loop->have_posts() ) : ?>
                     <ul>
-                        <li class="active"><a href="#">Jan</a></li>
-                        <li><a href="#">Feb</a></li>
-                        <li><a href="#">Mar</a></li>
-                        <li><a href="#">Apr</a></li>
-                        <li><a href="#">May</a></li>
-                        <li><a href="#">Jun</a></li>
-                        <li><a href="#">Jul</a></li>
-                        <li><a href="#">Aug</a></li>
-                        <li><a href="#">Sep</a></li>
-                        <li><a href="#">Oct</a></li>
-                        <li><a href="#">Nov</a></li>
-                        <li><a href="#">Dec</a></li>
+                        <?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
+                            <li <?php if($postId == get_the_ID()) : ?>class="active"<?php endif; ?>><a href="<?php the_permalink(); ?>"><?= substr(get_the_title(), 0, 3); ?></a></li>
+                        <?php endwhile; wp_reset_query(); ?>
                     </ul>
-
+                    <?php endif; ?>
                 </div>
 
             </div>
