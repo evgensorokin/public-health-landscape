@@ -67,6 +67,9 @@ section.home-top{background: url("img/body-top-bg.jpg") top no-repeat;padding: 4
 section.home-top .border-box-top{border: 1px solid #DFDFDF;height: 790px;padding: 25px 35px 50px;}
 section.home-top .border-box-top.height-auto{height: auto;}
 
+section.issues-top{padding: 40px 0;}
+section.issues-top .border-box-top{border: 1px solid #DFDFDF;padding: 25px 35px 50px;}
+
 /* header */
 header{padding-bottom: 70px;}
 header .logo{float: left;margin: 0 0 0 15px;}
@@ -145,10 +148,14 @@ section.month-page .images-post .img:first-child{border-top: none;}
 /* sidebar */
 .sidebar{width: 370px;}
 .sidebar-menu{background-color: rgba(233, 209, 164, 0.8);padding: 30px;}
-.sidebar .sidebar-menu .title{font-size: 26px;color: #008542;text-transform: uppercase;padding-bottom: 15px;}
-.sidebar .sidebar-menu li{padding: 15px 0;}
+.sidebar .sidebar-menu .title{font-size: 24px;color: #008542;text-transform: uppercase;padding-bottom: 5px;}
+.sidebar .sidebar-menu ul{padding: 20px 0 10px;}
+.sidebar .sidebar-menu ul:first-child{padding-top: 10px;}
+.sidebar .sidebar-menu li{padding: 5px 0;}
+.sidebar .sidebar-menu li.sub-title{font-size: 17px;color: #61514d;text-transform: uppercase;font-weight: bold;padding-bottom: 15px;}
 .sidebar .sidebar-menu li:last-child{padding-bottom: 0;}
-.sidebar .sidebar-menu li a{color: #000;text-decoration: none;font-size: 16px;}
+.sidebar .sidebar-menu li a{color: #61514d;text-decoration: none;font-size: 16px;}
+.sidebar .sidebar-menu li.active a{font-weight: bold;text-decoration: underline;}
 .sidebar .sidebar-menu li a:hover{color: #008542;}
 
 /* content */
