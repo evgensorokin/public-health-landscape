@@ -37,12 +37,13 @@
         $(".popup." + popup).fadeIn("fast", function(){
             $("body").addClass("popup-open");
 
-            if($("#owl-carousel-popup").length > 0) {
-                $("#owl-carousel-popup").owlCarousel({
+            if($("#owl-carousel-calendar-popup").length > 0) {
+                $("#owl-carousel-calendar-popup").owlCarousel({
                     items: 4,
                     loop: true,
                     nav: true,
-                    navText: ['<span class="arrow left"></span>', '<span class="arrow right"></span>']
+                    navText: ['<span class="arrow left"></span>', '<span class="arrow right"></span>'],
+                    startPosition: startMonthCarouselPopup - 2
                 });
             }
 
@@ -54,8 +55,48 @@
         });
     });
 
+    $(".popup-pagination li").on("click", function(){
+        var _this = $(this);
+        var categoryLoader = $(this).data("slug");
+
+        $('.popup .box-slider').html('<p class="ajaxLoading">Loading...</p>');
+        var data = {
+            'action': 'loadpostpopup',
+            'categoryLoader': categoryLoader
+        };
+        $.ajax({
+            url: ajaxurl,
+            data: data,
+            type: 'POST',
+            success: function (data) {
+                $(".popup-pagination li").removeClass("active");
+                _this.addClass("active");
+
+                if (data) {
+                    var posts = jQuery.parseJSON(data);
+                    var carousel = '<div class="owl-carousel" id="owl-carousel-calendar-popup">';
+
+                    jQuery.each(posts, function(i, v){
+                        var active = i == 0 ? 'active' : '';
+                        carousel += '<a href="'+ v.link +'" class="slide ' + active + '"><p>'+ v.title +' <span>'+ v.category +'</span></p></a>';
+                    });
+                    carousel += '</div>';
+
+                    $('.ajaxLoading').remove();
+                    $('.popup .box-slider').append(carousel);
+                    $("#owl-carousel-calendar-popup").owlCarousel({
+                        items: 4,
+                        loop: true,
+                        nav: true,
+                        navText: ['<span class="arrow left"></span>', '<span class="arrow right"></span>']
+                    });
+                }
+            }
+        });
+    });
+
 } )( jQuery );
 
-function redirectLink(link){
+function redirectLink(link) {
     window.location.href = link;
 }

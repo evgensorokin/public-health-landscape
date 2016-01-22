@@ -34,45 +34,62 @@
 
                 <div class="popup-title text-center">The Calendar</div>
 
-                <div class="owl-carousel" id="owl-carousel-popup">
-                    <a href="#" class="slide">
-                        <p>January <span>2016</span></p>
-                    </a>
-                    <a href="#" class="slide">
-                        <p>February <span>2016</span></p>
-                    </a>
-                    <a href="#" class="slide">
-                        <p>March <span>2016</span></p>
-                    </a>
-                    <a href="#" class="slide">
-                        <p>April <span>2016</span></p>
-                    </a>
-                    <a href="#" class="slide">
-                        <p>May <span>2016</span></p>
-                    </a>
-                    <a href="#" class="slide">
-                        <p>June <span>2016</span></p>
-                    </a>
-                    <a href="#" class="slide">
-                        <p>July <span>2016</span></p>
-                    </a>
+                <?php
+                $categoryCalendar = get_category_by_slug('calendar');
+
+                $args = array('parent' => $categoryCalendar->term_id);
+                $categories = get_categories( $args );
+                ?>
+
+                <div class="box-slider">
+                    <div class="owl-carousel" id="owl-carousel-calendar-popup">
+                        <?php $activeIPopup = 1;
+                        if( $categories ) {
+                            foreach ($categories as $cat) {
+                                if($cat->name != date("Y")) continue;
+
+                                $args = array('post_type' => 'post', 'posts_per_page' => 12, 'category_name' => $cat->slug, 'orderby' => 'post_date', 'order' => 'ASC');
+                                $loop = new WP_Query( $args );
+
+                                if( $loop->have_posts() ) : ?>
+
+                                <?php $i = 0; while ( $loop->have_posts() ) :
+                                    $titlePost = get_the_title($loop->the_post());
+                                    if($titlePost == date('F') && $cat->name == date('Y')){
+                                        $activeIPopup = $i;
+                                    }
+                                    ?>
+                                    <a href="<?php the_permalink(); ?>" class="slide <?= $titlePost == date('F') ? 'active' : '' ?>">
+                                        <p><?php the_title(); ?> <span><?= date('Y'); ?></span></p>
+                                    </a>
+                                    <?php $i++; endwhile; wp_reset_query(); ?>
+                                <?php endif; ?>
+                        <?php } } ?>
+                    </div>
                 </div>
+
+                <script type="application/javascript">
+                    var ajaxurl = '<?php echo site_url() ?>/wp-admin/admin-ajax.php';
+                    var startMonthCarouselPopup = <?= $activeIPopup ?>;
+                </script>
+
+                <?php
+                $categoryCalendar = get_category_by_slug('calendar');
+
+                $args = array('parent' => $categoryCalendar->term_id);
+                $categories = get_categories( $args );
+
+                if( $categories ) { ?>
 
                 <div class="popup-pagination">
                     <ul>
-                        <li><a href="#">2006</a></li>
-                        <li><a href="#">2007</a></li>
-                        <li><a href="#">2008</a></li>
-                        <li><a href="#">2009</a></li>
-                        <li><a href="#">2010</a></li>
-                        <li><a href="#">2011</a></li>
-                        <li><a href="#">2012</a></li>
-                        <li class="active"><a href="#">2013</a></li>
-                        <li><a href="#">2014</a></li>
-                        <li><a href="#">2015</a></li>
-                        <li><a href="#">2016</a></li>
+                        <?php foreach ($categories as $cat) { ?>
+                            <li class="<?= $cat->name == date('Y') ? 'active' : '' ?>" data-slug="<?= $cat->slug ?>"><?= $cat->cat_name ?></li>
+                        <?php } ?>
                     </ul>
                 </div>
+
+                <?php } ?>
             </div>
 
         </div>

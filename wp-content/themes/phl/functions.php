@@ -255,3 +255,26 @@ if( function_exists('acf_add_options_page') ) {
     acf_add_options_sub_page('Footer');
 
 }
+
+function true_load_posts(){
+    $args = array('post_type' => 'post', 'posts_per_page' => 12, 'category_name' => $_POST['categoryLoader'], 'orderby' => 'post_date', 'order' => 'ASC');
+    $loop = new WP_Query( $args );
+    $request = array();
+
+    if( $loop->have_posts() ) {
+        while ($loop->have_posts()) {
+            $loop->the_post();
+            $categoryPost = get_the_category($loop->post->ID);
+            $request[] = array(
+                'link' => get_the_permalink($loop->post->ID),
+                'title' => $loop->post->post_title,
+                'category' => $categoryPost[0]->cat_name
+            );
+        }
+    }
+    wp_reset_query();
+    die(json_encode($request));
+}
+
+add_action('wp_ajax_loadpostpopup', 'true_load_posts');
+add_action('wp_ajax_nopriv_loadpostpopup', 'true_load_posts');
