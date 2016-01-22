@@ -37,8 +37,8 @@
         $(".popup." + popup).fadeIn("fast", function(){
             $("body").addClass("popup-open");
 
-            if($("#owl-carousel-calendar-popup").length > 0) {
-                $("#owl-carousel-calendar-popup").owlCarousel({
+            if($(".owl-carousel").length > 0) {
+                $(".popup." + popup + " .owl-carousel").owlCarousel({
                     items: 4,
                     loop: true,
                     nav: true,
@@ -55,13 +55,13 @@
         });
     });
 
-    $(".popup-pagination li").on("click", function(){
+    $(".popup-pagination.calendar li").on("click", function(){
         var _this = $(this);
         var categoryLoader = $(this).data("slug");
 
-        $('.popup .box-slider').html('<p class="ajaxLoading">Loading...</p>');
+        $('.popup.calendar .box-slider').html('<p class="ajaxLoading">Loading...</p>');
         var data = {
-            'action': 'loadpostpopup',
+            'action': 'loadpostpopupcalendar',
             'categoryLoader': categoryLoader
         };
         $.ajax({
@@ -69,22 +69,62 @@
             data: data,
             type: 'POST',
             success: function (data) {
-                $(".popup-pagination li").removeClass("active");
+                $(".popup-pagination.calendar li").removeClass("active");
                 _this.addClass("active");
 
                 if (data) {
                     var posts = jQuery.parseJSON(data);
-                    var carousel = '<div class="owl-carousel" id="owl-carousel-calendar-popup">';
+                    var carousel = '<div class="owl-carousel">';
 
                     jQuery.each(posts, function(i, v){
                         var active = i == 0 ? 'active' : '';
-                        carousel += '<a href="'+ v.link +'" class="slide ' + active + '"><p>'+ v.title +' <span>'+ v.category +'</span></p></a>';
+                        carousel += '<a href="'+ v.link +'" class="slide ' + active + '"><p>'+ v.title +'<span>'+ v.category +'</span></p></a>';
                     });
                     carousel += '</div>';
 
                     $('.ajaxLoading').remove();
-                    $('.popup .box-slider').append(carousel);
-                    $("#owl-carousel-calendar-popup").owlCarousel({
+                    $('.popup.calendar .box-slider').append(carousel);
+                    $(".owl-carousel").owlCarousel({
+                        items: 4,
+                        loop: true,
+                        nav: true,
+                        navText: ['<span class="arrow left"></span>', '<span class="arrow right"></span>']
+                    });
+                }
+            }
+        });
+    });
+
+    $(".popup-pagination.issues li").on("click", function(){
+        var _this = $(this);
+        var categoryLoader = $(this).data("id");
+
+        $('.popup.issues .box-slider').html('<p class="ajaxLoading">Loading...</p>');
+        var data = {
+            'action': 'loadpostpopupissues',
+            'categoryLoader': categoryLoader
+        };
+        $.ajax({
+            url: ajaxurl,
+            data: data,
+            type: 'POST',
+            success: function (data) {
+                $(".popup-pagination.issues li").removeClass("active");
+                _this.addClass("active");
+
+                if (data) {
+                    var posts = jQuery.parseJSON(data);
+                    var carousel = '<div class="owl-carousel">';
+
+                    jQuery.each(posts, function(i, v){
+                        var active = i == 0 ? 'active' : '';
+                        carousel += '<a href="'+ v.link +'" class="slide ' + active + '"><p>'+ v.title +'<span>'+ v.category +'</span></p></a>';
+                    });
+                    carousel += '</div>';
+
+                    $('.ajaxLoading').remove();
+                    $('.popup.issues .box-slider').append(carousel);
+                    $(".owl-carousel").owlCarousel({
                         items: 4,
                         loop: true,
                         nav: true,

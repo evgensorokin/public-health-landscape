@@ -256,7 +256,7 @@ if( function_exists('acf_add_options_page') ) {
 
 }
 
-function true_load_posts(){
+function true_load_posts_calendar(){
     $args = array('post_type' => 'post', 'posts_per_page' => 12, 'category_name' => $_POST['categoryLoader'], 'orderby' => 'post_date', 'order' => 'ASC');
     $loop = new WP_Query( $args );
     $request = array();
@@ -276,5 +276,27 @@ function true_load_posts(){
     die(json_encode($request));
 }
 
-add_action('wp_ajax_loadpostpopup', 'true_load_posts');
-add_action('wp_ajax_nopriv_loadpostpopup', 'true_load_posts');
+add_action('wp_ajax_loadpostpopupcalendar', 'true_load_posts_calendar');
+add_action('wp_ajax_nopriv_loadpostpopupcalendar', 'true_load_posts_calendar');
+
+function true_load_posts_issues(){
+    $args = array('parent' => $_POST['categoryLoader'], 'hide_empty' => 0);
+    $categories = get_categories( $args );
+    $request = array();
+
+    if( $categories ) {
+        foreach ($categories as $cat) {
+            $category = get_category($_POST['categoryLoader']);
+            $request[] = array(
+                'link' => get_category_link($cat->cat_ID),
+                'title' => $cat->cat_name,
+                'category' => $category->cat_name
+            );
+        }
+    }
+    wp_reset_query();
+    die(json_encode($request));
+}
+
+add_action('wp_ajax_loadpostpopupissues', 'true_load_posts_issues');
+add_action('wp_ajax_nopriv_loadpostpopupissues', 'true_load_posts_issues');

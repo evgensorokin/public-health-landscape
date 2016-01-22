@@ -10,6 +10,10 @@
  */
 ?>
 
+    </div>
+
+</section>
+
 <footer>
     <div class="container text-center">
 
