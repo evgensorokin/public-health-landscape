@@ -1,5 +1,5 @@
 <?php
-/* Template Name: Calendar Month page */
+/* Template Name Posts: Calendar template */
 get_header('month');
 global $post;
 $postId = $post->ID;

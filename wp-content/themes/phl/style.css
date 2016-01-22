@@ -50,6 +50,7 @@ q:before, q:after, .clearfix:before, .clearfix:after{display: table;content: " "
 table{border-collapse: collapse;border-spacing: 0;}
 
 h1{font-size: 49px;color: #008542;padding-bottom: 30px;}
+h2{font-size: 16px;color: #008542;font-weight: bold;}
 h2.title{font-size: 50px;color: #008542;padding-bottom: 20px;}
 
 p{font-size: 16px;color: #000;line-height: 26px;padding: 15px 0;}
