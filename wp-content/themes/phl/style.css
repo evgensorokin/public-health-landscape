@@ -162,6 +162,8 @@ section.month-page .images-post .img:first-child{border-top: none;}
 /* content */
 .content{width: 700px;float: right;}
 .content p:last-child{padding-bottom: 0;}
+.description-box{padding-bottom: 25px;border-bottom: 1px solid #ccc;margin-bottom: 25px;}
+.addtoany_list a{width:auto !important;}
 
 /* popup */
 .popup{position: fixed;z-index: 100;width: 100%;height: 100%;top: 0;left: 0;background-color: #fff;display: none;

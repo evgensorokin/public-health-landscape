@@ -15,7 +15,11 @@ while ( have_posts() ) : the_post(); ?>
 
             <h1><?php the_field('title_h1'); ?></h1>
 
-            <?php the_content(); ?>
+            <div class="description-box">
+                <?php the_content(); ?>
+            </div>
+
+            <?php echo do_shortcode('[addtoany]'); ?>
 
         </div>
     </div>

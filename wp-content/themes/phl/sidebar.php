@@ -6,7 +6,8 @@
  * @subpackage Twenty_Sixteen
  * @since Twenty Sixteen 1.0
  */
-
+global $post;
+$currentPostId = $post->ID;
 $category = get_queried_object();
 
 $arg = array('child_of' => $category->term_id, 'hide_empty' => 0);
@@ -49,10 +50,8 @@ if(!empty($news_slug)){
             <?php if( $loopFeatures->have_posts() ) : ?>
                 <ul>
                     <li class="sub-title">FEATURES:</li>
-                <?php while ( $loopFeatures->have_posts() ) :
-                    $titlePost = get_the_title($loopFeatures->the_post());
-                    ?>
-                    <li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
+                    <?php while ( $loopFeatures->have_posts() ) : $loopFeatures->the_post(); $idPost = get_the_ID(); ?>
+                    <li <?= $currentPostId == $idPost ? 'class="active"' : '' ?>><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
                     <?php $i++; endwhile; wp_reset_query(); ?>
                 </ul>
             <?php endif; ?>
@@ -60,11 +59,9 @@ if(!empty($news_slug)){
             <?php if( $loopNews->have_posts() ) : ?>
                 <ul>
                     <li class="sub-title">REGIONAL NEWS</li>
-                    <?php while ( $loopNews->have_posts() ) :
-                        $titlePost = get_the_title($loopNews->the_post());
-                        ?>
-                        <li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
-                        <?php $i++; endwhile; wp_reset_query(); ?>
+                    <?php while ( $loopNews->have_posts() ) : $loopNews->the_post(); $idPost = get_the_ID(); ?>
+                    <li <?= $currentPostId == $idPost ? 'class="active"' : '' ?>><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
+                    <?php $i++; endwhile; wp_reset_query(); ?>
                 </ul>
             <?php endif; ?>
 
