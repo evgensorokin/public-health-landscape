@@ -52,7 +52,7 @@ if(!empty($news_slug)){
     <aside class="col sidebar">
         <div class="sidebar-menu">
 
-            <div class="title">In This <?= $wpObject->cat_name ?> Issue</div>
+            <div class="title">In This <?= empty($wpObject->cat_name) ? get_field('season') : $wpObject->cat_name ?> Issue</div>
 
             <?php if( !empty($loopFeatures) && $loopFeatures->have_posts() ) : ?>
                 <ul>
