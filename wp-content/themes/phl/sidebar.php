@@ -7,11 +7,18 @@
  * @since Twenty Sixteen 1.0
  */
 global $post;
-$currentPostId = $post->ID;
-$category = get_queried_object();
+$wpObject = get_queried_object();
 
-$arg = array('child_of' => $category->term_id, 'hide_empty' => 0);
-$subCategories = get_categories($arg);
+if(!empty($wpObject->term_id)) {
+    $arg = array('child_of' => $wpObject->term_id, 'hide_empty' => 0);
+    $subCategories = get_categories($arg);
+} else {
+    $currentPostId = $post->ID;
+    $subCategories = get_the_category($currentPostId);
+
+    $arg = array('parent' => $subCategories[0]->parent, 'hide_empty' => 0);
+    $subCategories = get_categories($arg);
+}
 
 if($subCategories){
     foreach($subCategories as $fr){
@@ -20,11 +27,11 @@ if($subCategories){
         }
     }
 }
-
 if(!empty($features_slug)){
     $args = array('post_type' => 'post', 'posts_per_page' => -1, 'category_name' => $features_slug, 'orderby' => 'post_date', 'order' => 'ASC');
     $loopFeatures = new WP_Query($args);
 }
+
 
 if($subCategories){
     foreach($subCategories as $fr){
@@ -33,11 +40,11 @@ if($subCategories){
         }
     }
 }
-
 if(!empty($news_slug)){
     $args = array('post_type' => 'post', 'posts_per_page' => -1, 'category_name' => $news_slug, 'orderby' => 'post_date', 'order' => 'ASC');
     $loopNews = new WP_Query($args);
 }
+
 ?>
 
 <?php if ( is_active_sidebar( 'sidebar-1' )  ) : ?>
@@ -45,9 +52,9 @@ if(!empty($news_slug)){
     <aside class="col sidebar">
         <div class="sidebar-menu">
 
-            <div class="title">In This <?= $category->cat_name ?> Issue</div>
+            <div class="title">In This <?= $wpObject->cat_name ?> Issue</div>
 
-            <?php if( $loopFeatures->have_posts() ) : ?>
+            <?php if( !empty($loopFeatures) && $loopFeatures->have_posts() ) : ?>
                 <ul>
                     <li class="sub-title">FEATURES:</li>
                     <?php while ( $loopFeatures->have_posts() ) : $loopFeatures->the_post(); $idPost = get_the_ID(); ?>
@@ -56,7 +63,7 @@ if(!empty($news_slug)){
                 </ul>
             <?php endif; ?>
 
-            <?php if( $loopNews->have_posts() ) : ?>
+            <?php if( !empty($loopNews) && $loopNews->have_posts() ) : ?>
                 <ul>
                     <li class="sub-title">REGIONAL NEWS</li>
                     <?php while ( $loopNews->have_posts() ) : $loopNews->the_post(); $idPost = get_the_ID(); ?>
