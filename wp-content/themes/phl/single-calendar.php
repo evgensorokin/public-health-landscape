@@ -22,9 +22,9 @@ while ( have_posts() ) : the_post(); ?>
 
                         <div class="desc"><?php the_content(); ?></div>
 
-                        <?php $file = get_field('download_wallpaper'); if( $file ): ?>
+                        <?php $file = get_field('download_wallpaper'); if( $file ): $url = wp_get_attachment_url( $file ); ?>
 
-                            <div class="text-center"><a href="<?= $file; ?>" class="btn">Download <?php the_title(); ?> Wallpaper</a></div>
+                            <div class="text-center"><a href="<?= $url; ?>" class="btn">Download <?php the_title(); ?> Wallpaper</a></div>
 
                         <?php endif; ?>
 
