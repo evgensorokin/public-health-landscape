@@ -51,6 +51,7 @@
                                             <?php if($yearFuture || $monthFuture) { ?>
                                                 <div class="slide">
                                                     <p><?php the_title(); ?> <span><?= date('Y'); ?></span></p>
+                                                    <small>Coming soon</small>
                                                 </div>
                                             <?php } else { ?>
                                                 <a href="<?php the_permalink(); ?>" class="slide <?= $titlePost == date('F') && (int)$cat->name == (int)date('Y') ? 'active' : '' ?>">
@@ -127,6 +128,7 @@
                                         <?php if($yearFuture || $monthFuture) { ?>
                                             <div class="slide">
                                                 <p><?= $catS->cat_name ?><span><?= $cat->cat_name; ?></span></p>
+                                                <small>Coming soon</small>
                                             </div>
                                         <?php } else { ?>
                                             <a href="<?php echo get_category_link($catS->cat_ID); ?>" class="slide <?= $catS->cat_name == getSeason() && (int)$cat->name == (int)date('Y') ? 'active' : '' ?>">

@@ -51,6 +51,7 @@ get_header();
                                 if($yearFuture || $monthFuture) { ?>
                                     <div class="slide">
                                         <p><?php the_title(); ?> <span><?= $cat->name; ?></span></p>
+                                        <small>Coming soon</small>
                                     </div>
                                 <?php } else { ?>
                                     <a href="<?php the_permalink(); ?>" class="slide <?= $titlePost == date('F') && $cat->name == date('Y') ? 'active' : '' ?>">

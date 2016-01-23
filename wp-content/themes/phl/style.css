@@ -104,8 +104,9 @@ section.home-top .border-box-top.height-auto{height: auto;}
 header{padding-bottom: 70px;}
 header .logo{float: left;margin: 0 0 0 15px;}
 header .menu{float: right;margin: 0 15px 0 0;}
-header .menu li{display: inline-block;vertical-align: middle;}
-header .menu li:before{content: "|";font-size: 24px;color: #269162;margin: 0 12px 0 10px;}
+header .menu li{display: inline-block;vertical-align: middle;position: relative;padding: 0 17px 0 15px;}
+header .menu li:before{content: "";background: url("img/li_menu.png") center no-repeat;width: 4px;height: 31px;display: block;
+position: absolute;top: -7px;left: -5px;}
 header .menu li:first-child:before{content: normal; }
 header .menu li a{font-size: 24px;text-decoration: none;cursor: pointer;font-family: 'Angelina';font-weight: bold;vertical-align: middle;position: relative;}
 header .menu li a:hover:after{content: "";border-bottom: 1px solid #269162;position: absolute;width: 100%;bottom: 0;left: 0;}
@@ -134,9 +135,12 @@ header .menu li a:hover:after{content: "";border-bottom: 1px solid #269162;posit
 .art-calendar{background: url("img/home-bg-middle.jpg") bottom no-repeat;padding: 20px 0 50px;margin-bottom: -50px;min-height: 700px;}
 .art-calendar p{font-size: 18px;line-height: 28px;color: #333333;padding: 25px 25%;}
 .owl-carousel{margin: 70px 100px 0;width: calc(100% - 200px);}
-.owl-carousel .slide{width: 175px;height: 175px;border: 2px solid #008752;text-align: center;margin: 0 auto;display: block;text-decoration: none;font-family: 'BauerBodoniStd';}
+.owl-carousel .slide{width: 175px;height: 175px;border: 2px solid #008752;text-align: center;margin: 0 auto;display: block;text-decoration: none;
+    font-family: 'BauerBodoniStd';position: relative;}
+.owl-carousel .slide small{position: absolute;width: 100%;bottom: 10px;color: #008752;font-size: 14px;left: 0;text-align: center;display: none;}
 .owl-carousel .slide.active,
 .owl-carousel .slide:hover{border: 7px solid #008752;}
+.owl-carousel .slide:hover small{display: block;}
 .owl-carousel .slide p{position: relative;top: 50%;transform: translate(-50%, -50%);font-size: 26px;color: #008752;left: 50%;padding: 0;font-family: 'BauerBodoniStd';}
 .owl-carousel .slide p span{font-size: 16px;color: #008752;display: block;}
 .owl-carousel .arrow{position: absolute;top: 50%;height: 23px;width: 33px;display: block;margin-top: -12px;}
@@ -144,7 +148,7 @@ header .menu li a:hover:after{content: "";border-bottom: 1px solid #269162;posit
 .owl-carousel .arrow.right{background: url("img/arrow-right.png");right: -50px;}
 
 /* month page */
-section.month-page h1{font-size: 64px;color: #b5a787;}
+section.month-page h1{font-size: 64px;color: #b5a787;line-height: 68px;}
 section.month-page h1 strong{color: #766052;}
 section.month-page .perl-box{background: url("img/bg-perl.png") center no-repeat;height: 1250px;padding: 120px 90px 120px 150px;position: relative;}
 section.month-page .perl-box .back-close{position: absolute;top: 80px;right: 70px;z-index: 1000;}
@@ -188,7 +192,7 @@ section.month-page .images-post .img:first-child{border-top: none;}
 .sidebar .sidebar-menu li{padding: 5px 0;font-family: 'BauerBodoniStd';}
 .sidebar .sidebar-menu li.sub-title{font-size: 17px;color: #61514d;text-transform: uppercase;font-weight: bold;padding-bottom: 15px;font-family: 'BauerBodoniStd Bold';}
 .sidebar .sidebar-menu li:last-child{padding-bottom: 0;}
-.sidebar .sidebar-menu li a{color: #61514d;text-decoration: none;font-size: 16px;font-family: 'BauerBodoniStd';}
+.sidebar .sidebar-menu li a{color: #61514d;text-decoration: none;font-size: 16px;font-family: 'TradeGothicLTStd';}
 .sidebar .sidebar-menu li.active a{font-weight: bold;text-decoration: underline;}
 .sidebar .sidebar-menu li a:hover{color: #008542;}
 
@@ -213,6 +217,7 @@ section.month-page .images-post .img:first-child{border-top: none;}
 .popup .box-slider .ajaxLoading{text-align: center;font-size: 18px;color: #fff;position: relative;top: 50%;transform: translate(0, -50%);}
 .popup .popup-content .owl-carousel{width: 100%;margin: 0;}
 .popup .popup-content .owl-carousel .slide{border-color: #66B796;width: 230px;height: 230px;}
+.popup .popup-content .owl-carousel .slide small{color: #fff;}
 .popup .popup-content .owl-carousel .slide:hover,
 .popup .popup-content .owl-carousel .slide.active{border-color: #BDDFD1;}
 .popup .popup-content .owl-carousel .slide p{color: #fff;font-size: 36px;line-height: 42px;}

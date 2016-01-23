@@ -267,10 +267,10 @@ function getSeason() {
 
 function getNumberSeason($season) {
     $seasons = array(
-        1 => 'Winter',
-        2 => 'Spring',
-        3 => 'Summer',
-        4 => 'Autumn'
+        1 => 'Spring',
+        2 => 'Summer',
+        3 => 'Autumn',
+        4 => 'Winter'
     );
     return array_search($season, $seasons);
 }

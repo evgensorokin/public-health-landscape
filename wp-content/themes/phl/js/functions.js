@@ -84,7 +84,7 @@
                         if(v.clickable){
                             carousel += '<a href="'+ v.link +'" class="slide ' + active + '"><p>'+ v.title +'<span>'+ v.category +'</span></p></a>';
                         } else {
-                            carousel += '<div class="slide"><p>'+ v.title +'<span>'+ v.category +'</span></p></div>';
+                            carousel += '<div class="slide"><p>'+ v.title +'<span>'+ v.category +'</span></p><small>Coming soon</small></div>';
                         }
                     });
                     carousel += '</div>';
@@ -130,7 +130,7 @@
                         if(v.clickable){
                             carousel += '<a href="'+ v.link +'" class="slide ' + active + '"><p>'+ v.title +'<span>'+ v.category +'</span></p></a>';
                         } else {
-                            carousel += '<div class="slide"><p>'+ v.title +'<span>'+ v.category +'</span></p></div>';
+                            carousel += '<div class="slide"><p>'+ v.title +'<span>'+ v.category +'</span></p><small>Coming soon</small></div>';
                         }
                     });
                     carousel += '</div>';
