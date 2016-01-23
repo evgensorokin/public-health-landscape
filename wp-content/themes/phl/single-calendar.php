@@ -24,7 +24,7 @@ while ( have_posts() ) : the_post(); ?>
 
                         <?php $file = get_field('download_wallpaper'); if( $file ): $url = wp_get_attachment_url( $file ); ?>
 
-                            <div class="text-center"><a href="<?= $url; ?>" class="btn">Download <?php the_title(); ?> Wallpaper</a></div>
+                            <div class="text-center"><a href="<?= $url; ?>" class="btn" download>Download <?php the_title(); ?> Wallpaper</a></div>
 
                         <?php endif; ?>
 
