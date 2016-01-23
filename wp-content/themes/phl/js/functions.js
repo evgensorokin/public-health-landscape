@@ -79,7 +79,8 @@
                     var carousel = '<div class="owl-carousel">';
 
                     jQuery.each(posts, function(i, v){
-                        var active = i == 0 ? 'active' : '';
+                        var active = v.active == true ? 'active' : '';
+                        startSlide = v.active == true ? i : 1;
                         if(v.clickable){
                             carousel += '<a href="'+ v.link +'" class="slide ' + active + '"><p>'+ v.title +'<span>'+ v.category +'</span></p></a>';
                         } else {
@@ -94,7 +95,8 @@
                         items: 4,
                         loop: true,
                         nav: true,
-                        navText: ['<span class="arrow left"></span>', '<span class="arrow right"></span>']
+                        navText: ['<span class="arrow left"></span>', '<span class="arrow right"></span>'],
+                        startPosition: startSlide - 2
                     });
                 }
             }
@@ -123,8 +125,13 @@
                     var carousel = '<div class="owl-carousel">';
 
                     jQuery.each(posts, function(i, v){
-                        var active = i == 0 ? 'active' : '';
-                        carousel += '<a href="'+ v.link +'" class="slide ' + active + '"><p>'+ v.title +'<span>'+ v.category +'</span></p></a>';
+                        var active = v.active == true ? 'active' : '';
+                        startSlide = v.active == true ? i : 1;
+                        if(v.clickable){
+                            carousel += '<a href="'+ v.link +'" class="slide ' + active + '"><p>'+ v.title +'<span>'+ v.category +'</span></p></a>';
+                        } else {
+                            carousel += '<div class="slide"><p>'+ v.title +'<span>'+ v.category +'</span></p></div>';
+                        }
                     });
                     carousel += '</div>';
 
@@ -134,7 +141,8 @@
                         items: 4,
                         loop: true,
                         nav: true,
-                        navText: ['<span class="arrow left"></span>', '<span class="arrow right"></span>']
+                        navText: ['<span class="arrow left"></span>', '<span class="arrow right"></span>'],
+                        startPosition: startSlide
                     });
                 }
             }

@@ -9,15 +9,6 @@
  * @since PHL 1.0
  */
 
-function getSeason() {
-    $seasons = array(
-        0 => 'Winter',
-        1 => 'Spring',
-        2 => 'Summer',
-        3 => 'Autumn'
-    );
-    return $seasons[floor(date('n') / 3) % 4];
-}
 ?>
 
 <div class="popup calendar" id="calendar">
@@ -62,7 +53,7 @@ function getSeason() {
                                                     <p><?php the_title(); ?> <span><?= date('Y'); ?></span></p>
                                                 </div>
                                             <?php } else { ?>
-                                                <a href="<?php the_permalink(); ?>" class="slide <?= $titlePost == date('F') ? 'active' : '' ?>">
+                                                <a href="<?php the_permalink(); ?>" class="slide <?= $titlePost == date('F') && (int)$cat->name == (int)date('Y') ? 'active' : '' ?>">
                                                     <p><?php the_title(); ?> <span><?= date('Y'); ?></span></p>
                                                 </a>
                                             <?php } ?>
@@ -131,11 +122,17 @@ function getSeason() {
                                         if($catS->cat_name == getSeason()) {
                                             $activeIPopupIssues = $i;
                                         }
-                                        $monthFuture = $catS->cat_name > date('m') && (int)$cat->name == (int)date('Y') ? true : false;
+                                        $monthFuture = getNumberSeason($catS->cat_name) > getNumberSeason(getSeason()) && (int)$cat->name == (int)date('Y') ? true : false;
                                         ?>
-                                        <a href="<?php echo get_category_link($catS->cat_ID); ?>" class="slide <?= $catS->cat_name == getSeason() ? 'active' : '' ?>">
-                                            <p><?= $catS->cat_name ?><span><?= $cat->cat_name; ?></span></p>
-                                        </a>
+                                        <?php if($yearFuture || $monthFuture) { ?>
+                                            <div class="slide">
+                                                <p><?= $catS->cat_name ?><span><?= $cat->cat_name; ?></span></p>
+                                            </div>
+                                        <?php } else { ?>
+                                            <a href="<?php echo get_category_link($catS->cat_ID); ?>" class="slide <?= $catS->cat_name == getSeason() && (int)$cat->name == (int)date('Y') ? 'active' : '' ?>">
+                                                <p><?= $catS->cat_name ?><span><?= $cat->cat_name; ?></span></p>
+                                            </a>
+                                        <?php } ?>
                                         <?php $i++; } wp_reset_query(); ?>
                                 <?php endif; ?>
                             <?php } } ?>

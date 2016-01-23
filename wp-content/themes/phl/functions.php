@@ -253,7 +253,26 @@ if( function_exists('acf_add_options_page') ) {
     acf_add_options_page();
 
     acf_add_options_sub_page('Footer');
+}
 
+function getSeason() {
+    $seasons = array(
+        0 => 'Winter',
+        1 => 'Spring',
+        2 => 'Summer',
+        3 => 'Autumn'
+    );
+    return $seasons[floor(date('n') / 3) % 4];
+}
+
+function getNumberSeason($season) {
+    $seasons = array(
+        1 => 'Winter',
+        2 => 'Spring',
+        3 => 'Summer',
+        4 => 'Autumn'
+    );
+    return array_search($season, $seasons);
 }
 
 function true_load_posts_calendar(){
@@ -273,7 +292,8 @@ function true_load_posts_calendar(){
                 'link' => get_the_permalink($loop->post->ID),
                 'title' => $loop->post->post_title,
                 'category' => $categoryPost[0]->cat_name,
-                'clickable' => $clickable
+                'clickable' => $clickable,
+                'active' => $loop->post->post_title == date('F') && (int)$categoryPost[0]->cat_name == (int)date('Y') ? true : false
             );
         }
     }
@@ -292,11 +312,16 @@ function true_load_posts_issues(){
     if( $categories ) {
         foreach ($categories as $cat) {
             $category = get_category($_POST['categoryLoader']);
+            $yearFuture = (int)$category->name > (int)date('Y') ? true : false;
+            $monthFuture = getNumberSeason($cat->cat_name) > getNumberSeason(getSeason()) && (int)$category->name == (int)date('Y') ? true : false;
+            $clickable = $yearFuture || $monthFuture ? false : true;
 
             $request[] = array(
                 'link' => get_category_link($cat->cat_ID),
                 'title' => $cat->cat_name,
-                'category' => $category->cat_name
+                'category' => $category->cat_name,
+                'clickable' => $clickable,
+                'active' => $cat->cat_name == getSeason() && (int)$category->name == (int)date('Y') ? true : false
             );
         }
     }
