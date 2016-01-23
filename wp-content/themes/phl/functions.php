@@ -265,10 +265,15 @@ function true_load_posts_calendar(){
         while ($loop->have_posts()) {
             $loop->the_post();
             $categoryPost = get_the_category($loop->post->ID);
+            $yearFuture = (int)$categoryPost[0]->cat_name > (int)date('Y') ? true : false;
+            $monthFuture = date('m', strtotime($loop->post->post_title)) > date('m') && (int)$categoryPost[0]->cat_name == (int)date('Y') ? true : false;
+            $clickable = $yearFuture || $monthFuture ? false : true;
+
             $request[] = array(
                 'link' => get_the_permalink($loop->post->ID),
                 'title' => $loop->post->post_title,
-                'category' => $categoryPost[0]->cat_name
+                'category' => $categoryPost[0]->cat_name,
+                'clickable' => $clickable
             );
         }
     }
@@ -287,6 +292,7 @@ function true_load_posts_issues(){
     if( $categories ) {
         foreach ($categories as $cat) {
             $category = get_category($_POST['categoryLoader']);
+
             $request[] = array(
                 'link' => get_category_link($cat->cat_ID),
                 'title' => $cat->cat_name,

@@ -30,8 +30,10 @@
     $("ul.menu li.modal-link a").on("click", function(){
         var _this = $(this);
         var popup = 'calendar';
+        var startSlide = startMonthCarouselPopup - 2;
         if(_this.closest('li').hasClass('issues')){
             popup = 'issues';
+            startSlide = startSeasonCarouselPopup - 2;
         }
 
         $(".popup." + popup).fadeIn("fast", function(){
@@ -43,7 +45,7 @@
                     loop: true,
                     nav: true,
                     navText: ['<span class="arrow left"></span>', '<span class="arrow right"></span>'],
-                    startPosition: startMonthCarouselPopup - 2
+                    startPosition: startSlide
                 });
             }
 
@@ -78,7 +80,11 @@
 
                     jQuery.each(posts, function(i, v){
                         var active = i == 0 ? 'active' : '';
-                        carousel += '<a href="'+ v.link +'" class="slide ' + active + '"><p>'+ v.title +'<span>'+ v.category +'</span></p></a>';
+                        if(v.clickable){
+                            carousel += '<a href="'+ v.link +'" class="slide ' + active + '"><p>'+ v.title +'<span>'+ v.category +'</span></p></a>';
+                        } else {
+                            carousel += '<div class="slide"><p>'+ v.title +'<span>'+ v.category +'</span></p></div>';
+                        }
                     });
                     carousel += '</div>';
 

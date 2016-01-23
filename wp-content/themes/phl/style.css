@@ -106,7 +106,8 @@ header .menu{float: right;margin: 0 15px 0 0;}
 header .menu li{display: inline-block;vertical-align: middle;}
 header .menu li:before{content: "|";font-size: 24px;color: #269162;margin: 0 12px 0 10px;}
 header .menu li:first-child:before{content: normal; }
-header .menu li a{font-size: 24px;text-decoration: none;cursor: pointer;font-family: 'Angelina';font-weight: bold;vertical-align: middle;}
+header .menu li a{font-size: 24px;text-decoration: none;cursor: pointer;font-family: 'Angelina';font-weight: bold;vertical-align: middle;position: relative;}
+header .menu li a:hover:after{content: "";border-bottom: 1px solid #269162;position: absolute;width: 100%;bottom: 0;left: 0;}
 
 /* name month */
 .name-month{position: relative;top: calc(50% - 143px);transform: translate(0, -50%);}
@@ -170,10 +171,12 @@ section.month-page .images-post .img:first-child{border-top: none;}
 .pagination-month .nice-select .option.selected.focus{background-color: transparent;}
 .pagination-month ul{text-align: justify;float: right;}
 .pagination-month ul li{display: inline-block;margin-left: 5px;}
-.pagination-month ul li a{color: #755e50;text-decoration: none;font-size: 18px;height: 42px;line-height: 42px;border: 1px solid transparent;
+.pagination-month ul li a,
+.pagination-month ul li span{color: #755e50;text-decoration: none;font-size: 18px;height: 42px;line-height: 42px;border: 1px solid transparent;
     width: 62px;text-align: center;display: block;font-family: 'BauerBodoniStd Bold';}
 .pagination-month ul li.active a,
-.pagination-month ul li a:hover{color: #008752;border-color: #008752;text-transform: uppercase;}
+.pagination-month ul li a:hover,
+.pagination-month ul li span:hover{color: #008752;border-color: #008752;text-transform: uppercase;}
 
 /* sidebar */
 .sidebar{width: 370px;}

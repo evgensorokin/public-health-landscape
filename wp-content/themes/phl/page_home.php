@@ -37,6 +37,7 @@ get_header();
             <?php
                 if( $categories ) {$i = 0;
                     foreach ($categories as $cat) {
+                        $yearFuture = (int)$cat->name > (int)date('Y') ? true : false;
                         $args = array('post_type' => 'post', 'posts_per_page' => -1, 'category_name' => $cat->slug, 'orderby' => 'post_date', 'order' => 'ASC');
                         $loop = new WP_Query( $args );
                         if( $loop->have_posts() ) : ?>
@@ -46,10 +47,16 @@ get_header();
                                 if($titlePost == date('F') && $cat->name == date('Y')){
                                     $activeI = $i;
                                 }
-                                ?>
-                                <a href="<?php the_permalink(); ?>" class="slide <?= $titlePost == date('F') && $cat->name == date('Y') ? 'active' : '' ?>">
-                                    <p><?php the_title(); ?> <span><?= $cat->name; ?></span></p>
-                                </a>
+                                $monthFuture = date('m', strtotime($titlePost)) > date('m') && (int)$cat->name == (int)date('Y') ? true : false;
+                                if($yearFuture || $monthFuture) { ?>
+                                    <div class="slide">
+                                        <p><?php the_title(); ?> <span><?= $cat->name; ?></span></p>
+                                    </div>
+                                <?php } else { ?>
+                                    <a href="<?php the_permalink(); ?>" class="slide <?= $titlePost == date('F') && $cat->name == date('Y') ? 'active' : '' ?>">
+                                        <p><?php the_title(); ?> <span><?= $cat->name; ?></span></p>
+                                    </a>
+                                <?php } ?>
                             <?php $i++; endwhile; wp_reset_query(); ?>
                         <?php endif; ?>
             <?php $i++; } } ?>

@@ -70,12 +70,23 @@ while ( have_posts() ) : the_post(); ?>
                     <?php } ?>
 
                     <?php
+                    $yearFuture = (int)$currentCategory[0]->cat_name > (int)date('Y') ? true : false;
+
                     $args = array('post_type' => 'post', 'posts_per_page' => 12, 'category_name' => $currentCategory[0]->slug, 'orderby' => 'post_date', 'order' => 'ASC');
                     $loop = new WP_Query( $args );
                     if( $loop->have_posts() ) : ?>
                     <ul>
-                        <?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
-                            <li <?php if($postId == get_the_ID()) : ?>class="active"<?php endif; ?>><a href="<?php the_permalink(); ?>"><?= substr(get_the_title(), 0, 3); ?></a></li>
+                        <?php while ( $loop->have_posts() ) :
+                            $titlePost = get_the_title($loop->the_post());
+                            $monthFuture = date('m', strtotime($titlePost)) > date('m') && (int)$currentCategory[0]->name == (int)date('Y') ? true : false;
+                            ?>
+                            <li <?php if($postId == get_the_ID()) : ?>class="active"<?php endif; ?>>
+                                <?php if($yearFuture || $monthFuture) { ?>
+                                    <span><?= substr(get_the_title(), 0, 3); ?></span>
+                                    <?php } else { ?>
+                                    <a href="<?php the_permalink(); ?>"><?= substr(get_the_title(), 0, 3); ?></a>
+                                <?php } ?>
+                            </li>
                         <?php endwhile; wp_reset_query(); ?>
                     </ul>
                     <?php endif; ?>
