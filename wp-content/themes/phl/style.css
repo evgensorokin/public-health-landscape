@@ -6,7 +6,7 @@ html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
 del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
+small, strike, strong, tt, var,
 b, u, i, center,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
@@ -80,8 +80,9 @@ q:before, q:after, .clearfix:before, .clearfix:after{display: table;content: " "
 .clearfix:after{clear: both;}
 table{border-collapse: collapse;border-spacing: 0;}
 
-h1{font-size: 49px;color: #008542;padding-bottom: 30px;font-family: 'BauerBodoniStd Bold';}
-h2{font-size: 16px;color: #008542;font-weight: bold;}
+h1{font-size: 46px;color: #008542;padding-bottom: 20px;font-family: 'BauerBodoniStd Bold';line-height: 52px;}
+h2{font-size: 16px;color: #008542;font-weight: bold;font-family: 'TradeGothicLTStd';}
+h3{font-size: 18px;color: #008542;font-family: 'BauerBodoniStd Bold';text-transform: uppercase;}
 h2.title{font-size: 50px;color: #008542;padding-bottom: 20px;font-family: 'BauerBodoniStd Bold';}
 
 p{font-size: 16px;color: #000;line-height: 26px;padding: 15px 0;font-family: 'TradeGothicLTStd';}
@@ -194,7 +195,8 @@ section.month-page .images-post .img:first-child{border-top: none;}
 /* content */
 .content{width: 700px;float: right;}
 .content p:last-child{padding-bottom: 0;}
-.description-box{padding-bottom: 25px;border-bottom: 1px solid #ccc;margin-bottom: 25px;}
+.shareThis{padding-top: 25px;border-top: 1px solid #ccc;margin-top: 25px;}
+.shareThis strong{margin-right: 25px;font-size: 20px;font-weight: bold;float: left;margin-top: 6px;}
 .addtoany_list a{width:auto !important;}
 
 /* popup */

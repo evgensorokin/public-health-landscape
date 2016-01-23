@@ -13,13 +13,17 @@ while ( have_posts() ) : the_post(); ?>
 
         <div class="col content">
 
+            <h3><?php the_field('title_h3'); ?></h3>
             <h1><?php the_field('title_h1'); ?></h1>
 
             <div class="description-box">
                 <?php the_content(); ?>
             </div>
 
-            <?php echo do_shortcode('[addtoany]'); ?>
+            <div class="shareThis">
+                <strong>Share this article on:</strong>
+                <?php echo do_shortcode('[addtoany]'); ?>
+            </div>
 
         </div>
     </div>
