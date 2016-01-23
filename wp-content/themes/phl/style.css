@@ -114,13 +114,14 @@ header .menu li a:hover:after{content: "";border-bottom: 1px solid #269162;posit
 /* name month */
 .name-month{position: relative;top: calc(50% - 143px);transform: translate(0, -50%);}
 .name-month p{font-size: 86px;color: #008752;line-height: 94px;font-family: 'BauerBodoniStd Bold';}
-.name-month .btn{border: 2px solid #269162;display: inline-block;padding: 10px 20px;font-size: 26px;text-decoration: none;font-family: 'TradeGothicLTStd';font-weight: bold;}
+.name-month .btn{border: 2px solid #269162;display: inline-block;padding: 0 20px;font-size: 26px;text-decoration: none;font-family: 'TradeGothicLTStd';
+    font-weight: bold;line-height: 52px;height: 50px;}
 .name-month .btn:hover{border: 2px solid transparent;background-color: #269162;color: #fff;}
 
 /* subscribe */
 .subscribe{padding: 20px 0 90px;}
 .subscribe .bold{text-transform: uppercase;font-size: 20px;font-family: 'TradeGothicLTStd';}
-.subscribe p{font-size: 18px;line-height: 36px;color: #333333;padding: 25px 25%;}
+.subscribe p{font-size: 18px;line-height: 30px;color: #333333;padding: 25px 25%;}
 .subscribe .form-subscribe p{display: inline-block;padding: 0;margin: 0;}
 .subscribe .form-subscribe input{border: 1px solid #D6D6D6;height: 40px;padding: 0 15px;line-height: 40px;box-sizing: border-box;margin-right: -4px;width: 350px;}
 .subscribe .form-subscribe input.wpcf7-not-valid{border-color: #9a0000;}
@@ -137,10 +138,10 @@ header .menu li a:hover:after{content: "";border-bottom: 1px solid #269162;posit
 .owl-carousel{margin: 70px 100px 0;width: calc(100% - 200px);}
 .owl-carousel .slide{width: 175px;height: 175px;border: 2px solid #008752;text-align: center;margin: 0 auto;display: block;text-decoration: none;
     font-family: 'BauerBodoniStd';position: relative;}
-.owl-carousel .slide small{position: absolute;width: 100%;bottom: 10px;color: #008752;font-size: 14px;left: 0;text-align: center;display: none;}
+.owl-carousel .slide small{position: absolute;width: 100%;bottom: 10px;color: #008752;font-size: 14px;left: 0;text-align: center;}
 .owl-carousel .slide.active,
 .owl-carousel .slide:hover{border: 7px solid #008752;}
-.owl-carousel .slide:hover small{display: block;}
+.owl-carousel .slide:hover small{bottom: 5px;}
 .owl-carousel .slide p{position: relative;top: 50%;transform: translate(-50%, -50%);font-size: 26px;color: #008752;left: 50%;padding: 0;font-family: 'BauerBodoniStd';}
 .owl-carousel .slide p span{font-size: 16px;color: #008752;display: block;}
 .owl-carousel .arrow{position: absolute;top: 50%;height: 23px;width: 33px;display: block;margin-top: -12px;}
@@ -200,7 +201,7 @@ section.month-page .images-post .img:first-child{border-top: none;}
 .content{width: 700px;float: right;}
 .content p:last-child{padding-bottom: 0;}
 .shareThis{padding-top: 25px;border-top: 1px solid #ccc;margin-top: 25px;}
-.shareThis strong{margin-right: 25px;font-size: 20px;font-weight: bold;float: left;margin-top: 6px;}
+.shareThis strong{margin-right: 25px;font-size: 20px;font-weight: bold;float: left;margin-top: 6px;font-family: 'TradeGothicLTStd';}
 .addtoany_list a{width:auto !important;}
 
 /* popup */

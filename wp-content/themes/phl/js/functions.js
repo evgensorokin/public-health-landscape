@@ -9,7 +9,7 @@
 
     if($("#owl-carousel").length > 0) {
         $("#owl-carousel").owlCarousel({
-            items: 5,
+            items: itemsHomeCarousel > 5 ? 5 : itemsHomeCarousel,
             loop: true,
             nav: true,
             navText: ['<span class="arrow left"></span>', '<span class="arrow right"></span>'],
@@ -33,7 +33,7 @@
         var startSlide = startMonthCarouselPopup - 2;
         if(_this.closest('li').hasClass('issues')){
             popup = 'issues';
-            startSlide = startSeasonCarouselPopup - 2;
+            startSlide = startSeasonCarouselPopup;
         }
 
         $(".popup." + popup).fadeIn("fast", function(){

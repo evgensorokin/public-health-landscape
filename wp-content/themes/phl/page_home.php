@@ -40,7 +40,7 @@ get_header();
                         $yearFuture = (int)$cat->name > (int)date('Y') ? true : false;
                         $args = array('post_type' => 'post', 'posts_per_page' => -1, 'category_name' => $cat->slug, 'orderby' => 'post_date', 'order' => 'ASC');
                         $loop = new WP_Query( $args );
-                        if( $loop->have_posts() ) : ?>
+                        if( $loop->have_posts() ) : $items = 0; ?>
 
                             <?php while ( $loop->have_posts() ) :
                                 $titlePost = get_the_title($loop->the_post());
@@ -58,13 +58,14 @@ get_header();
                                         <p><?php the_title(); ?> <span><?= $cat->name; ?></span></p>
                                     </a>
                                 <?php } ?>
-                            <?php $i++; endwhile; wp_reset_query(); ?>
+                            <?php $i++; $items++; endwhile; wp_reset_query(); ?>
                         <?php endif; ?>
             <?php $i++; } } ?>
         </div>
 
         <script type="application/javascript">
             var startMonthCarousel = <?= $activeI ?>;
+            var itemsHomeCarousel = <?= $items ?>;
         </script>
 
     </div>

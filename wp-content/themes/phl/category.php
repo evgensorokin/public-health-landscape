@@ -14,6 +14,11 @@ $category = get_queried_object();
 
             <?php the_field('category_description', $category->taxonomy.'_'.$category->term_id); ?>
 
+            <div class="shareThis">
+                <strong>Share this article on:</strong>
+                <?php echo do_shortcode('[addtoany]'); ?>
+            </div>
+
         </div>
     </div>
 
