@@ -41,7 +41,7 @@
 
         <div class="name-month text-center">
             <p><?= date('F'); ?> <?= date('Y'); ?></p>
-            <a href="#" class="btn">Read Volume 24</a>
+            <a href="<?php echo esc_url( home_url( '/' ) ); ?>calendar/<?= date('Y'); ?>/<?= mb_strtolower(date('F')); ?>" class="btn">Read Volume 24</a>
         </div>
     </div>
 

@@ -23,9 +23,9 @@
 
 <body>
 
-<section class="issues-top">
+<section class="home-top">
 
-    <div class="container border-box-top">
+    <div class="container border-box-top height-auto">
         <header>
             <div class="clearfix">
                 <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="logo"><img src="<?php echo get_template_directory_uri(); ?>/img/logo.png" /></a>
